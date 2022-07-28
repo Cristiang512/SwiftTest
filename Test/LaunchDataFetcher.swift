@@ -13,8 +13,7 @@ struct launch: Codable {
     public var userId: Int
     public var id: Int
     public var title: String
-    public var completed: Bool
-    
+    public var body: String
 }
 
 extension launch: Identifiable {
@@ -30,7 +29,7 @@ public class LaunchDataFetcher: ObservableObject {
     }
 
     func load() {
-        let url = URL(string: "https://jsonplaceholder.typicode.com/todos")!
+        let url = URL(string: "https://jsonplaceholder.typicode.com/posts")!
         URLSession.shared.dataTask(with: url) {(data,response,error) in
             do {
                 if let d = data {

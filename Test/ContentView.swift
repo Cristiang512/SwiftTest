@@ -18,14 +18,10 @@ struct ContentView: View {
                 NavigationLink(destination: ListDetailView(launch: launch)){
                     VStack (alignment: .leading) {
                         Text(launch.title)
-
-                        Text(launch.completed ? "Completed" : "Pending")
-                            .font(.system(size: 11))
-                            .foregroundColor(Color.gray)
                     }
                 }
             }
-            .navigationTitle("Todo's")
+            .navigationTitle("Post's")
         }
     }
 }
