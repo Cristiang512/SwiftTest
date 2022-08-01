@@ -17,28 +17,61 @@ struct ListDetailView: View {
     
     var body: some View {
             VStack{
-//                ScrollView{
+                ScrollView{
                 Text("Details")
                     .font(.largeTitle).fontWeight(.bold)
                 Spacer().frame(height: 20)
                 Text(launch.title).font(.title)
-                    .foregroundColor(Color.blue)
+                        .foregroundColor(Color.blue)
                 Spacer().frame(height: 15)
                 Text(launch.body).font(.headline)
                     .fontWeight(.thin)
-                    .multilineTextAlignment(.center)
+                    .multilineTextAlignment(.leading)
                     .font(.custom("Courier", size: 80))
                 Spacer()
                 Text("Comments")
                     .font(.largeTitle).fontWeight(.bold)
-//                }
+                }
                 List(fetcherComment.launchesComments) { launchComment in
-                    Text("Name").foregroundColor(Color.blue)
-                    Text(launchComment.name)
-                    Text("E-mail").foregroundColor(Color.blue)
-                    Text(launchComment.email)
-                    Text("Body").foregroundColor(Color.blue)
-                    Text(launchComment.body)
+                    HStack(){
+                        Image(systemName: "person")
+                            .padding(5)
+                        Text("Name").foregroundColor(Color.blue)
+                    }
+                    HStack(){
+                        Image(systemName: "checkmark")
+                            .padding(1)
+                            .foregroundColor(.blue)
+                        Text(launchComment.name)
+                    }
+                    
+                    HStack(){
+                        Image(systemName: "mail")
+                            .padding(5)
+                        Text("E-mail").foregroundColor(Color.blue)
+                    }
+                    HStack(){
+                        Image(systemName: "checkmark")
+                            .padding(1)
+                            .foregroundColor(.blue)
+                        Text(launchComment.email)
+                    }
+                    
+                    HStack(){
+                        Image(systemName: "text.justify")
+                            .padding(5)
+                        Text("Body").foregroundColor(Color.blue)
+                    }
+                    HStack(){
+                        Image(systemName: "checkmark")
+                            .padding(1)
+                            .foregroundColor(.blue)
+                        Text(launchComment.body)
+                    }
+                }
+                .background(Color.blue.ignoresSafeArea())
+                .onAppear {
+                    UITableView.appearance().backgroundColor = .clear
                 }
                 Spacer()
             }
